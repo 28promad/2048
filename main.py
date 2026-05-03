@@ -280,14 +280,14 @@ def main():
                 sys.exit()
         
             if event.type == pygame.KEYDOWN:
-            if event.key in [pygame.K_w, pygame.K_UP]:
-                direction = 'w'
-            if event.key in [pygame.K_s, pygame.K_DOWN]:
-                direction = 's'
-            if event.key in [pygame.K_a, pygame.K_LEFT]:
-                direction = 'a'
-            if event.key in [pygame.K_d, pygame.K_RIGHT]:
-                direction = 'd'
+                if event.key in [pygame.K_w, pygame.K_UP]:
+                    direction = 'w'
+                if event.key in [pygame.K_s, pygame.K_DOWN]:
+                    direction = 's'
+                if event.key in [pygame.K_a, pygame.K_LEFT]:
+                    direction = 'a'
+                if event.key in [pygame.K_d, pygame.K_RIGHT]:
+                    direction = 'd'
 
         # Game logic
         if move:
