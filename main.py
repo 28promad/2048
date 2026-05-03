@@ -15,7 +15,7 @@ move
 import sys
 from random import choice
 from time import sleep
-
+import pygame
 
 def clear_screen(msg=None):
     if msg:
@@ -252,13 +252,13 @@ def move(direction, board):
 
 
 def main():
-    # board = reset_board()
+    """
+    board = reset_board()
     # print_board(board)
-    board = [[2, None, None, 2], [None, None, None, None], [2, None, None, None], [None, None, 2, None]]
+    # board = [[2, None, None, 2], [None, None, None, None], [2, None, None, None], [None, None, 2, None]]
     # board = add_two(board)
     # board = add_two(board)
     print_board(board)
-
     while not gameover:
 
         move_input = input("Enter a move, (wasd):\t").lower().strip()
@@ -268,11 +268,47 @@ def main():
 
         board = add_two(board)
         print_board(board)
-    sys.exit("Game over :(")
+    """
+    running = True
+    while running:
+        # Process events
+        direction = None
+        for event in pygame.event.get()
+            if event.type == pygame.QUIT:
+                running = not running
+                pygame.quit()
+                sys.exit()
+        
+            if event.type == pygame.KEYDOWN:
+            if event.key in [pygame.K_w, pygame.K_UP]:
+                direction = 'w'
+            if event.key in [pygame.K_s, pygame.K_DOWN]:
+                direction = 's'
+            if event.key in [pygame.K_a, pygame.K_LEFT]:
+                direction = 'a'
+            if event.key in [pygame.K_d, pygame.K_RIGHT]:
+                direction = 'd'
+
+        # Game logic
+        if move:
+            move(direction, board)
+
+        # Maintaining timing
+        pygame.time.Clock().tick(60)
+
+    
+
 
 BOARD_WIDTH = 4
 BOARD_HEIGHT = 4
+SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 500
 DELAY = 0.25
 gameover = False
+# initialising pygame
+pygame.init()
+
+# setting up screen for pygame
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 if __name__ == '__main__':
     main()
