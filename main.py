@@ -245,7 +245,7 @@ def move(direction, board):
                 board[y][x] = cols[x][y]
 
 
-
+    board = add_two(board)
     clear_screen()
 
 
@@ -270,10 +270,13 @@ def main():
         print_board(board)
     """
     running = True
+    board = reset_board()
+    print_board(board)
+
     while running:
         # Process events
         direction = None
-        for event in pygame.event.get()
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = not running
                 pygame.quit()
@@ -290,8 +293,10 @@ def main():
                     direction = 'd'
 
         # Game logic
-        if move:
+        if direction:
             move(direction, board)
+            
+            print_board(board)
 
         # Maintaining timing
         pygame.time.Clock().tick(60)
